@@ -71,10 +71,29 @@ client.commands_create.get("planflight").execute(commands);
 
 });
 client.on("interactionCreate",async (interaction)=>{
+    const { commandName,options}=interaction
+    if (interaction.isButton()){
+        const customId=interaction.customId
+     console.log(customId.replace("confirm",""))
+   if(customId.endsWith("confirm"))
+   {
+    // Updates the interaction 
+    interaction.update({ content: 'Confirmed flight!', components: [] });
+  //set confirmed in db true
+  await db.set(`${customId.replace("confirm","")}.confirmed`,true)
+   }
+   else
+   {
+    interaction.update({ content: 'Quitted flight!', components: [] });
+    await db.delete(`${customId.replace("confirm","")}.confirmed`)
+   }
+      
+        return;
+    } 
+	
 if(!interaction.type === interaction.type.ApplicationCommand){
     return
 }
-const { commandName,options}=interaction
 if(commandName=="help")
 {
     client.commands.get("help").execute(client,interaction);
