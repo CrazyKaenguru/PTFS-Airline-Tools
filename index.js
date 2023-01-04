@@ -66,6 +66,9 @@ commands?.create({
     description:"Get help!"
 })
 client.commands_create.get("planflight").execute(commands);
+client.commands_create.get("flights").execute(commands);
+client.commands_create.get("takeoff").execute(commands);
+client.commands_create.get("admin").execute(commands);
 //console.log(client.commands_create)
 
 
@@ -84,8 +87,9 @@ client.on("interactionCreate",async (interaction)=>{
    }
    else
    {
-    interaction.update({ content: 'Quitted flight!', components: [] });
-    await db.delete(`${customId.replace("confirm","")}.confirmed`)
+    // Delete the QUITTED flight.
+    interaction.update({ content: 'Quitted flight!', components: [] ,ephermal:true});
+    await db.delete(`${customId.replace("quit","")}`)
    }
       
         return;
@@ -101,6 +105,18 @@ if(commandName=="help")
 if(commandName=="planflight")
 {
     client.commands.get("planflight").execute(client,interaction);
+}
+if(commandName=="flights")
+{
+    client.commands.get("flights").execute(client,interaction);
+}
+if(commandName=="takeoff")
+{
+    client.commands.get("takeoff").execute(client,interaction);
+}
+if(commandName=="admin")
+{
+    client.commands.get("admin").execute(client,interaction);
 }
 
 

@@ -38,8 +38,9 @@ module.exports = {
      const destination=interaction.options.getString("destination")
      const maxpassengers=interaction.options.getInteger("maxpassengers")
      const time=interaction.options.getString("time")
+     
     
-     db.set(flightnumber, { pilot: pilot ,aircraft: aircraft,departure: departure,destination: destination,maxpassengers: maxpassengers,time: time,confirmed:false});
+     db.set(flightnumber, { pilot: pilot ,aircraft: aircraft,departure: departure,destination: destination,maxpassengers: maxpassengers,time: time,confirmed:false,guild:interaction.guild.id});
 
 
     const row = new ActionRowBuilder()
@@ -62,6 +63,6 @@ module.exports = {
           
     );
 
-  interaction.reply({ content: 'please confirm this flight!', components: [row] });
+  interaction.reply({ content: 'please confirm this flight!', components: [row] ,ephemeral: true});
     }
 }

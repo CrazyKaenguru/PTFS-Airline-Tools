@@ -30,12 +30,182 @@ module.exports = {
                     description:"Enter your airport of departure!",
                     required:true,
                     type:Discord.ApplicationCommandOptionType.String,
+                    choices:[{
+                        name:"Tokyo",
+                        value:"ITKO",
+                    },
+                    {
+                        name:"Henstridge Airfield",
+                        value:"IHEN",
+                    },
+                    {
+                        name:"Barra Airport",
+                        value:"IBAR",
+                    },
+                    {
+                        name:"Paphos",
+                        value:"IPAP",
+                    },
+                    {
+                        name:"RAF Scampton",
+                        value:"ISCM",
+                    },
+                    {
+                        name:"Al Najaf",
+                        value:"IJAF",
+                    },
+                    {
+                        name:"Air Base Garry",
+                        value:"IGAR",
+                    },
+                    {
+                        name:"Larnaca Intl.",
+                        value:"ILAR"
+                    },
+                    {
+                        name:"Paphos Intl.",
+                        value:"IPAP",
+                    },
+                    {
+                        name:"Grindavik",
+                        value:"IGRV",
+                    },
+                    {
+                        name:"Izolirani",
+                        value:"IZOL",
+                    },
+                    {
+                        name:"Saba Airport",
+                        value:"IDCS",
+                    },
+                    {
+                        name:"Lukla Airport",
+                        value:"ILKL",
+                    },
+                    {
+                        name:"Perth Intl.",
+                        value:"IPPH",
+                    },
+                    {
+                        name:"Boltic Airfield",
+                        value:"IBLT",
+                    },
+                    {
+                        name:"Greater Rockford",
+                        value:"IRFD",
+                    },
+                    {
+                        name:"Mellor Intl.",
+                        value:"IMLR",
+                    },
+                    {
+                        name:"Training Centre",
+                        value:"ITRC",
+                    },
+                    {
+                        name:"Saint Barthelemy",
+                        value:"IBTH",
+                    },
+                    {
+                        name:"Ufo Base",
+                        value:"IUFO",
+                    },
+                    {
+                        name:"Sauthamptona Airport",
+                        value:"ISAU",
+                    },
+                    ]
                 },
                 {
                     name:"destination",
                     description:"Enter your airport of destination!",
                     required:true,
                     type:Discord.ApplicationCommandOptionType.String,
+                    choices:[{
+                        name:"Tokyo",
+                        value:"ITKO",
+                    },
+                    {
+                        name:"Henstridge Airfield",
+                        value:"IHEN",
+                    },
+                    {
+                        name:"Barra Airport",
+                        value:"IBAR",
+                    },
+                    {
+                        name:"Paphos",
+                        value:"IPAP",
+                    },
+                    {
+                        name:"RAF Scampton",
+                        value:"ISCM",
+                    },
+                    {
+                        name:"Al Najaf",
+                        value:"IJAF",
+                    },
+                    {
+                        name:"Air Base Garry",
+                        value:"IGAR",
+                    },
+                    {
+                        name:"Larnaca Intl.",
+                        value:"ILAR"
+                    },
+                    {
+                        name:"Paphos Intl.",
+                        value:"IPAP",
+                    },
+                    {
+                        name:"Grindavik",
+                        value:"IGRV",
+                    },
+                    {
+                        name:"Izolirani",
+                        value:"IZOL",
+                    },
+                    {
+                        name:"Saba Airport",
+                        value:"IDCS",
+                    },
+                    {
+                        name:"Lukla Airport",
+                        value:"ILKL",
+                    },
+                    {
+                        name:"Perth Intl.",
+                        value:"IPPH",
+                    },
+                    {
+                        name:"Boltic Airfield",
+                        value:"IBLT",
+                    },
+                    {
+                        name:"Greater Rockford",
+                        value:"IRFD",
+                    },
+                    {
+                        name:"Mellor Intl.",
+                        value:"IMLR",
+                    },
+                    {
+                        name:"Training Centre",
+                        value:"ITRC",
+                    },
+                    {
+                        name:"Saint Barthelemy",
+                        value:"IBTH",
+                    },
+                    {
+                        name:"Ufo Base",
+                        value:"IUFO",
+                    },
+                    {
+                        name:"Sauthamptona Airport",
+                        value:"ISAU",
+                    },
+                    ]
                 },
                 {
                     name:"time",
