@@ -71,6 +71,7 @@ client.commands_create.get("flights").execute(commands);
 client.commands_create.get("takeoff").execute(commands);
 client.commands_create.get("admin").execute(commands);
 client.commands_create.get("flightinfo").execute(commands);
+client.commands_create.get("book").execute(commands);
 //console.log(client.commands_create)
 
 
@@ -123,6 +124,10 @@ if(commandName=="admin")
 if(commandName=="flightinfo")
 {
     client.commands.get("flightinfo").execute(client,interaction);
+}
+if(commandName=="book")
+{
+    client.commands.get("book").execute(client,interaction);
 }
 
 
