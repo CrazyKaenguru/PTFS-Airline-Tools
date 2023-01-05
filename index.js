@@ -46,7 +46,7 @@ client.once("ready", () => {
     type: "WATCHING",
    });
 
-const guildID="958705753244467200"
+const guildID="981253723508576336"
 const guild= client.guilds.cache.get(guildID)
 let commands
 if(guild&&process.env.localcommand=="true")
@@ -69,6 +69,7 @@ client.commands_create.get("planflight").execute(commands);
 client.commands_create.get("flights").execute(commands);
 client.commands_create.get("takeoff").execute(commands);
 client.commands_create.get("admin").execute(commands);
+client.commands_create.get("flightinfo").execute(commands);
 //console.log(client.commands_create)
 
 
@@ -118,6 +119,11 @@ if(commandName=="admin")
 {
     client.commands.get("admin").execute(client,interaction);
 }
+if(commandName=="flightinfo")
+{
+    client.commands.get("flightinfo").execute(client,interaction);
+}
+
 
 
 })
