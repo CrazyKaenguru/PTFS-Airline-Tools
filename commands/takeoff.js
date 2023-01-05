@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
+const flightdb = db.table("flights");
 module.exports = {
     name: 'takeoff',
     description: "this is a ping command!",
@@ -13,10 +14,10 @@ module.exports = {
 .setColor('#ffff00')
 const flightnum=interaction.options.getString("flight")
 console.log(interaction.user.id)
-if(await db.has(flightnum)&&await db.get(`${flightnum}.pilot`)==interaction.user.id)
+if(await flightdb.has(flightnum)&&await flightdb.get(`${flightnum}.pilot`)==interaction.user.id)
 {
 
-    await db.delete(flightnum)
+    await flightdb.delete(flightnum)
         interaction.reply({embeds:[respond("The flight has been successfully removed from the list!",true)]})
 
     }

@@ -9,12 +9,12 @@ module.exports = {
             name:"planflight",
             description:"plan a Flight!",
             options:[
-                {
-                    name:"pilot",
-                    description:"Enter the pilots name",
-                    required:true,
-                    type:Discord.ApplicationCommandOptionType.User,
-                },
+               // {
+                //    name:"pilot",
+                //    description:"Enter the pilots name",
+                //    required:true,
+                //    type:Discord.ApplicationCommandOptionType.User,
+              //  },
                 {
                     name:"aircraft",
                     description:"Enter your Aircrafts Name!",

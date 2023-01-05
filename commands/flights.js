@@ -3,13 +3,13 @@ const Discord = require("discord.js");
 const fs = require('fs');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
-
+const flightdb=db.table('flights')
 module.exports = {
     name: 'flights',
     description: "this is a ping command!",
    async execute(client, interaction){
     const tablegapsize=12
-        var dball=await db.all()
+        var dball=await flightdb.all()
         var flights=[]
         var resflights=""
         for(let i =0;i< dball.length;i++)
@@ -18,7 +18,7 @@ module.exports = {
         if(dball[i].value.guild==interaction.guild.id&&dball[i].value.confirmed==true)
         {
             const values=dball[i].value
-            flights.push(dball[i].id.toString()+calculategapspaces(dball[i].id.toString().length)+values.time+calculategapspaces(values.time.length,20)+values.departure+calculategapspaces(values.departure.length,12)+values.destination+calculategapspaces(values.destination.length,18))//+values.aircraft+calculategapspaces(values.aircraft.length,12)+await client.users.cache.get(values.pilot).tag)
+            flights.push(dball[i].id.toString()+calculategapspaces(dball[i].id.toString().length)+values.time+calculategapspaces(values.time.length,20)+values.departure+calculategapspaces(values.departure.length,10)+values.destination)//+calculategapspaces(values.destination.length,18))//+values.aircraft+calculategapspaces(values.aircraft.length,12)+await client.users.cache.get(values.pilot).tag)
         }
         }
         function calculategapspaces(usedlength,specialgapsize)
@@ -64,7 +64,7 @@ module.exports = {
        }
 
        
-resflights="```\nflight num.|time               |departure  |destination\n"+calulatedottedlinespacer()+"\n"+resflights+"\n```"
+resflights="```\nflight num.|time               |departure|destination\n"+calulatedottedlinespacer()+"\n"+resflights+"\n```"
         console.log(resflights)
     
   

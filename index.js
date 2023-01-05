@@ -5,6 +5,7 @@ require("dotenv").config();
 const fs= require("fs")
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
+const flightdb=db.table('flights')
 const client = new Discord.Client({
   allowedMentions: {
     parse: ["users", "roles"],
@@ -84,13 +85,13 @@ client.on("interactionCreate",async (interaction)=>{
     // Updates the interaction 
     interaction.update({ content: 'Confirmed flight!', components: [] });
   //set confirmed in db true
-  await db.set(`${customId.replace("confirm","")}.confirmed`,true)
+  await flightdb.set(`${customId.replace("confirm","")}.confirmed`,true)
    }
    else
    {
     // Delete the QUITTED flight.
     interaction.update({ content: 'Quitted flight!', components: [] ,ephermal:true});
-    await db.delete(`${customId.replace("quit","")}`)
+    await flightdb.delete(`${customId.replace("quit","")}`)
    }
       
         return;
@@ -130,9 +131,5 @@ if(commandName=="flightinfo")
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
-  if(message.content=="!delete")
-  {
-   await db.deleteAll()
-  }
 });
 client.login(process.env.token);

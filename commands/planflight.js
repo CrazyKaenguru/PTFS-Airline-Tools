@@ -1,6 +1,6 @@
 const { QuickDB } = require('quick.db');
 const db = new QuickDB(); // using default driver
-
+const flightdb=db.table('flights')
 const Discord = require("discord.js");
 const fs = require('fs');
 const { ActionRowBuilder, ButtonBuilder,ButtonStyle } = require('discord.js');
@@ -16,7 +16,7 @@ module.exports = {
     {
         // Generates a unique flightnumber when the guild name is more than one word
         flightnumber=interaction.guild.name.split(" ")[0].charAt(0)+interaction.guild.name.split(" ")[1].charAt(0)+"_"+flightnumberending
-        for(var i= flightnumber; db.has(i.toString())==false;)
+        for(var i= flightnumber; flightdb.has(i.toString())==false;)
         {
             flightnumber=interaction.guild.name.split(" ")[0].charAt(0)+interaction.guild.name.split(" ")[1].charAt(0)+"_"+flightnumberending
         }
@@ -25,14 +25,14 @@ module.exports = {
     {
         // Generates a unique flightnumber when the guild name is only one word
      flightnumber=interaction.guild.name.slice(0,2)+"_"+flightnumberending
-     for(var i= flightnumber; db.has(i.toString())==false;)
+     for(var i= flightnumber; flightdb.has(i.toString())==false;)
         {
             flightnumber=interaction.guild.name.slice(0,2)+"_"+flightnumberending
         }
     }
      console.log(typeof(flightnumber))
      // Set the flight  in the database.
-     const pilot=interaction.options.getMember("pilot").id
+     const pilot=interaction.user.id//interaction.options.getMember("pilot").id
      const aircraft=interaction.options.getString("aircraft")
      const departure=interaction.options.getString("departure")
      const destination=interaction.options.getString("destination")
@@ -40,7 +40,7 @@ module.exports = {
      const time=interaction.options.getString("time")
      
     
-     db.set(flightnumber, { pilot: pilot ,aircraft: aircraft,departure: departure,destination: destination,maxpassengers: maxpassengers,time: time,confirmed:false,guild:interaction.guild.id});
+     flightdb.set(flightnumber, { pilot: pilot ,aircraft: aircraft,departure: departure,destination: destination,maxpassengers: maxpassengers,time: time,confirmed:false,guild:interaction.guild.id,bookedseats:0});
 
 
     const row = new ActionRowBuilder()
