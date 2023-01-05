@@ -3,6 +3,7 @@ const fs = require('fs');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
 const flightdb=db.table('flights')
+const bookingsdb = db.table("bookings");
 module.exports = {
     name: 'flightinfo',
     description: "this is a ping command!",
@@ -14,8 +15,17 @@ module.exports = {
         return
      }
      var flight=await flightdb.get(flightnumber)
-console.log(flight)
 
+var bookingslist=[]
+const bookings=await bookingsdb.all()
+for(let i=0;i<bookings.length;i++)
+{
+    if(bookings[i].value.flightnumber==flightnumber)
+    {
+        bookingslist.push(bookings[i].value.user)
+    }
+}
+console.log(bookingslist)
 interaction.reply({embeds:[
     respond(`Information for flight **${flightnumber}**:`,
     `flightnumber: **${flightnumber}**

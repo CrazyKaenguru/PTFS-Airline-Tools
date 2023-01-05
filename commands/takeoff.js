@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
 const fs = require('fs');
-
 const { QuickDB } = require('quick.db');
+const book = require("./book");
 const db = new QuickDB();
+const bookingsdb = db.table("bookings");
 const flightdb = db.table("flights");
 module.exports = {
     name: 'takeoff',
@@ -16,7 +17,14 @@ const flightnum=interaction.options.getString("flight")
 console.log(interaction.user.id)
 if(await flightdb.has(flightnum)&&await flightdb.get(`${flightnum}.pilot`)==interaction.user.id)
 {
-
+     var allbookings = await bookingsdb.all()
+     for(let i=0;i<allbookings.length;i++)
+     {
+        if(allbookings[i].value.flightnumber==flightnum)
+        {
+            await bookingsdb.delete(allbookings[i].id)
+        }
+     }
     await flightdb.delete(flightnum)
         interaction.reply({embeds:[respond("The flight has been successfully removed from the list!",true)]})
 
