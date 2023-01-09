@@ -139,3 +139,5 @@ client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 });
 client.login(process.env.token);
+
+require('http').createServer((req, res) => res.end('Bot is alive!')).listen(3000)
