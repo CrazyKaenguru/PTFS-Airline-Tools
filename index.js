@@ -42,6 +42,7 @@ for (const file of commandFiles_create) {
 }
 
 client.once("ready", () => {
+
   console.log("Bot is online!");
   client.user.setActivity("PTFS-Airline Tools", {
     type: "WATCHING",

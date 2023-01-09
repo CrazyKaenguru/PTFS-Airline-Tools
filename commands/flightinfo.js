@@ -22,7 +22,8 @@ for(let i=0;i<bookings.length;i++)
 {
     if(bookings[i].value.flightnumber==flightnumber)
     {
-        bookingslist.push(bookings[i].value.user)
+        //console.log((await client.users.fetch(bookings[i].value.user)).id)
+        bookingslist.push("\n**"+((await client.users.fetch(bookings[i].value.user)).username).toString()+"**")
     }
 }
 console.log(bookingslist)
@@ -34,7 +35,9 @@ interaction.reply({embeds:[
      departure: **${flight.departure}**
      destination: **${flight.destination}**
      pilot: <@${flight.pilot}>
-     time: **${flight.time}**`)]})
+     time: **${flight.time}**
+     passengers: ${bookingslist}
+     `)]})
 
       
     }
